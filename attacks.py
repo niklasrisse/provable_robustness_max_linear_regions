@@ -1,5 +1,6 @@
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 from cleverhans.attacks import CarliniWagnerL2, Attack, Model, CallableModelWrapper
 
 

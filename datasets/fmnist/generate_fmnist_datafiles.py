@@ -7,7 +7,8 @@ test set respectively.
 Pixel values are stored as uint8s (0-255); labels are zero-indexed.
 """
 
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 from tensorflow.keras.datasets import fashion_mnist
 import numpy as np
 import scipy.io as sio

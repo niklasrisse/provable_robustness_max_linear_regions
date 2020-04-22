@@ -6,7 +6,6 @@ import scipy.io
 sys.path.append('..')  # to import data.py from the parent directory
 sys.path.append('mip')
 import utils
-import parse
 
 
 def convert_mat_tf_to_mip(mat_tf, nn_type):
@@ -63,6 +62,7 @@ def parse_summary(mat_tf_file, dataset, eps):
     out_mip_file_dir = mat_tf_file.replace('.mat', ' eps={}/'.format(eps))
     out_mip_file = out_mip_file_dir + 'summary.csv'
 
+    import parse
     summary = parse.get_summary(out_mip_file, dataset)
     error_lb, error_ub = float(summary['Robust Error, LB']), float(summary['Robust Error, UB'])
     error_clean = float(summary['RegularError'])

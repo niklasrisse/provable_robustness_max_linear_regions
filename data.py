@@ -1,7 +1,8 @@
 import numpy
 import numpy as np
 import scipy.io
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 
 def get_batch_iterator(X, Y, batch_size, shuffle=False, n_batches='all'):
@@ -18,8 +19,8 @@ def get_batch_iterator(X, Y, batch_size, shuffle=False, n_batches='all'):
 
 def get_dataset(dataset):
     # Originally, all pixels values are uint8 values in [0, 255]
-    train = scipy.io.loadmat('datasets/{}/{}_int_train.mat'.format(dataset, dataset))
-    test = scipy.io.loadmat('datasets/{}/{}_int_test.mat'.format(dataset, dataset))
+    train = scipy.io.loadmat('provable_robustness_max_linear_regions/datasets/{}/{}_int_train.mat'.format(dataset, dataset))
+    test = scipy.io.loadmat('provable_robustness_max_linear_regions/datasets/{}/{}_int_test.mat'.format(dataset, dataset))
     x_train, y_train, x_test, y_test = train['images'], train['labels'], test['images'], test['labels']
 
     y_train, y_test = dense_to_one_hot(y_train.flatten()), dense_to_one_hot(y_test.flatten())
